@@ -7,6 +7,7 @@ import Login from "./routes/Login";
 import ErrorPage from "./errors/error-page";
 import { Root } from "./routes/root";
 import { Signup } from "./routes/signup";
+import { Upload } from "./routes/upload";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/upload",
-    element: <div>here is the Upload</div>,
+    element: <Upload />,
   },
 ]);
 
