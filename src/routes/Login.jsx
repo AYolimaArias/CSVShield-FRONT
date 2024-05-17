@@ -3,7 +3,7 @@ import Unauthenticated from "../components/Unauthenticated/Unauthenticated";
 const Login = () => {
   return (
     <div>
-      <Unauthenticated />;
+      <Unauthenticated />
     </div>
   );
 };
