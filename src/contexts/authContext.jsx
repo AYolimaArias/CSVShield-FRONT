@@ -5,7 +5,6 @@ const authContext = React.createContext({
   isAuthenticated: false,
   signup: () => {},
   login: () => {},
-  // logout:() =>{}
 });
 
 export function AuthProvider({ children }) {
@@ -64,16 +63,12 @@ export function AuthProvider({ children }) {
     }
   }
 
-  // function logout() {
-  //     window.localStorage.removeItem(tokenKey);
-  //     setIsAuthenticated(false);
-  //   }
-
-  return (
-    <authContext.Provider value={{ isAuthenticated, login, signup }}>
-      {children}
-    </authContext.Provider>
-  );
+  const value = {
+    isAuthenticated,
+    login,
+    signup,
+  };
+  return <authContext.Provider value={value}>{children}</authContext.Provider>;
 }
 
 export function useAuth() {
