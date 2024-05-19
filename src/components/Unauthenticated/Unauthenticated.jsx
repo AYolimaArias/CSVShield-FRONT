@@ -1,17 +1,16 @@
 // import * as React from "react";
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
+import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Unauthenticated = () => {
-  const { signup } = useAuth();
+  const { login, isAuthenticated } = useAuth();
 
   const [status, setStatus] = React.useState("idle");
-  const [signUpErrors, setSignUpErrors] = React.useState(null);
   const [formData, setFormData] = React.useState({
-    name: "",
     email: "",
     password: "",
-    role: "",
   });
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,34 +20,38 @@ const Unauthenticated = () => {
     event.preventDefault();
 
     setStatus("loading");
-    const { name, email, password, role } = formData;
+    const { email, password } = formData;
 
-    signup(name, email, password, role)
-      .then(() => setStatus("success"))
+    login(email, password)
+      .then(() => {
+        setStatus("success");
+      })
       .catch((error) => {
         setStatus("error");
-        setSignUpErrors(error.message);
+        console.error("Error during login:", error);
       });
   }
+
+  function handleSubmit2(event) {
+    event.preventDefault();
+    const { email, password } = formData;
+
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    };
+
+    fetch("https://csvshield.onrender.com/login", options)
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
+  }
   const isLoading = status === "loading";
-  const hasError = status === "error";
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="name"
-            name="name"
-            placeholder="Alexandra Martinez"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -72,30 +75,19 @@ const Unauthenticated = () => {
             minLength={6}
           />
         </div>
-
         <div>
-          <label htmlFor="role">Role</label>
-          <select>
-            <option value={formData.role} onChange={handleInputChange}>
-              admin
-            </option>
-            <option value={formData.role} onChange={handleInputChange}>
-              user
-            </option>
-          </select>
-        </div>
-
-        <div>
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? "Loading..." : "Create"}
-          </button>
+          {isAuthenticated ? (
+            <Link to="/upload">
+              {" "}
+              <button type="submit" disabled={isLoading}>
+                {isLoading ? "Loading..." : "Enter"}
+              </button>
+            </Link>
+          ) : (
+            <Unauthenticated />
+          )}
         </div>
       </form>
-      {hasError && (
-        <p className={["error-message"]}>
-          {signUpErrors || "Invalid Credentials"}
-        </p>
-      )}
     </div>
   );
 };

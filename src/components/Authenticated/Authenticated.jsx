@@ -26,7 +26,6 @@ const Authenticated = () => {
 
   return (
     <div>
-      <h1>Sistema de Carga de Datos</h1>
       <div>
         <form onSubmit={handleSubmit}>
           <div>

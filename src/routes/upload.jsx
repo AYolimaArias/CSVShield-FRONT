@@ -1,9 +1,9 @@
-import Authenticated from "../components/Authenticated/Authenticated";
+import CSVUpload from "../components/CSVUpload/CSVUpload";
 
 export const Upload = () => {
   return (
     <div>
-      <Authenticated />
+      <CSVUpload />
     </div>
   );
 };
