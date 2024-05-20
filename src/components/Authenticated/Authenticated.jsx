@@ -15,10 +15,13 @@ const Authenticated = () => {
     try {
       setStatus("loading");
       const response = await uploadCSVFile(formData);
-      setResults(response);
 
       setStatus("success");
-      console.log(response.data);
+      setResults(response);
+      // const arrayData = [];
+      // arrayData.push(response.data);
+      // console.log(arrayData);
+      // setResults(arrayData);
     } catch (error) {
       console.error("Error to upload the file", error);
       setStatus("error");
@@ -53,19 +56,33 @@ const Authenticated = () => {
             <div>
               <h3>Éxitos:</h3>
               <ul>
-                {results.data.success.map((row, details) => (
-                  <li key={row}>{details}</li>
+                {results.data.success.flat().map((item, index) => (
+                  <li key={index}>
+                    {item.id}, {item.name}, {item.email}, {item.age}
+                  </li>
                 ))}
               </ul>
             </div>
             <div>
               <h3>Errores:</h3>
               <ul>
-                {results.data.error.map((details, row) => (
-                  <li key={row}>{details}</li>
+                {results.data.error.flat().map((error, index) => (
+                  <li key={index}>
+                    Row {error.row}:{" "}
+                    {Object.entries(error.details).map(([field, message]) => (
+                      <div key={field}>
+                        {field}: {message}
+                      </div>
+                    ))}
+                  </li>
                 ))}
               </ul>
             </div>
+          </div>
+        )}
+        {status === "error" && (
+          <div>
+            <p>Error uploading the file. Please try again.</p>
           </div>
         )}
       </div>
