@@ -57,19 +57,25 @@ const Authenticated = () => {
               <button onClick={handleClick}>New File</button>
             </div>
             <div>
-              <h2>Resultados</h2>
               <div>
-                <h3>Éxitos:</h3>
-                <ul>
+                <div>
+                  {results.data.success.flat().length} records uploades
+                  successfully
+                </div>
+                {/* <ul>
                   {results.data.success.flat().map((item, index) => (
                     <li key={index}>
                       {item.id}, {item.name}, {item.email}, {item.age}
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
               <div>
-                <h3>Errores:</h3>
+                <div>
+                  {" "}
+                  The ({results.data.error.flat().length}) records listed
+                  encountered errors. Please rectify these issues and rety
+                </div>
                 <ul>
                   {results.data.error.flat().map((error, index) => (
                     <li key={index}>
