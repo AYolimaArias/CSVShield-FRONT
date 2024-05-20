@@ -5,6 +5,7 @@ const Authenticated = () => {
   const [status, setStatus] = React.useState("idle");
   const [selectedFile, setSelectedFile] = React.useState("");
   const [results, setResults] = React.useState(null);
+  const [errorRows, setErrorRows] = React.useState([]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -17,6 +18,14 @@ const Authenticated = () => {
 
       setStatus("success");
       setResults(response);
+      if (response.data && response.data.error) {
+        setErrorRows(
+          response.data.error.flat().map((error) => ({
+            row: error.row,
+            data: error.details,
+          }))
+        );
+      }
     } catch (error) {
       console.error("Error to upload the file", error);
       setStatus("error");
@@ -58,36 +67,43 @@ const Authenticated = () => {
             </div>
             <div>
               <div>
-                <div>
+                <div className="bg-green-500">
                   {results.data.success.flat().length} records uploades
                   successfully
                 </div>
-                {/* <ul>
-                  {results.data.success.flat().map((item, index) => (
-                    <li key={index}>
-                      {item.id}, {item.name}, {item.email}, {item.age}
-                    </li>
-                  ))}
-                </ul> */}
               </div>
               <div>
                 <div>
                   {" "}
-                  The ({results.data.error.flat().length}) records listed
-                  encountered errors. Please rectify these issues and rety
+                  The ({errorRows.length}) records listed encountered errors.
+                  Please rectify these issues and rety
                 </div>
-                <ul>
-                  {results.data.error.flat().map((error, index) => (
-                    <li key={index}>
-                      Row {error.row}:{" "}
-                      {Object.entries(error.details).map(([field, message]) => (
+                <div>
+                  {errorRows.map((error, index) => (
+                    <div key={index} style={{ margin: "10px 0" }}>
+                      <div>Row {error.row}:</div>
+                      {Object.entries(error.data).map(([field, message]) => (
                         <div key={field}>
-                          {field}: {message}
+                          <label htmlFor={`${field}-${index}`}>{field}</label>
+                          <input
+                            id={`${field}-${index}`}
+                            type="text"
+                            name={field}
+                            defaultValue={message.value}
+                            onChange={(e) => {
+                              const updatedErrorRows = [...errorRows];
+                              updatedErrorRows[index].data[field].value =
+                                e.target.value;
+                              setErrorRows(updatedErrorRows);
+                            }}
+                          />
+                          <div style={{ color: "red" }}>{message.error}</div>
                         </div>
                       ))}
-                    </li>
+                      <button>Retry</button>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </div>

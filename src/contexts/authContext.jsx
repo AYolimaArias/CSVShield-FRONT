@@ -54,12 +54,10 @@ export function AuthProvider({ children }) {
     const response = await fetch(baseUrl + "/signup", options);
 
     if (response.ok) {
-      const { token } = await response.json();
-      window.localStorage.setItem(tokenKey, token);
-      setIsAuthenticated(true);
-      return;
+      return "Account created successfully";
     } else {
       const body = await response.json();
+      console.log(body);
       const error =
         body.errors instanceof Array ? body.errors.join(", ") : body.errors;
       return Promise.reject(new Error(error));

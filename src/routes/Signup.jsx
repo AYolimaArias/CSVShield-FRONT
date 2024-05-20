@@ -10,24 +10,24 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
-    role: "",
+    role: "user",
   });
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     setStatus("loading");
     const { name, email, password, role } = formData;
-
-    signup(name, email, password, role)
-      .then(() => setStatus("success"))
-      .catch((error) => {
-        setStatus("error");
-        setSignUpErrors(error.message);
-      });
+    try {
+      await signup(name, email, password, role);
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+      setSignUpErrors(error.message);
+    }
   }
   const isLoading = status === "loading";
   const hasError = status === "error";
@@ -74,13 +74,15 @@ const Signup = () => {
 
         <div>
           <label htmlFor="role">Role</label>
-          <select>
-            <option value={formData.role} onChange={handleInputChange}>
-              admin
-            </option>
-            <option value={formData.role} onChange={handleInputChange}>
-              user
-            </option>
+          <select
+            id="role"
+            name="role"
+            value={formData.role}
+            onChange={handleInputChange}
+            required
+          >
+            <option>Admin</option>
+            <option>User</option>
           </select>
         </div>
 
