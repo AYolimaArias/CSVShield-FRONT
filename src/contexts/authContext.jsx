@@ -1,7 +1,7 @@
 import * as React from "react";
 import { baseUrl, tokenKey } from "../constants";
 
-const authContext = React.createContext({
+const AuthContext = React.createContext({
   isAuthenticated: false,
   signup: () => {},
   login: () => {},
@@ -26,19 +26,17 @@ export function AuthProvider({ children }) {
         "Content-Type": "application/json",
       },
     };
+
     try {
       const response = await fetch(baseUrl + "/login", options);
       console.log("Respuesta de la API:", response);
       if (response.ok) {
-        const { token } = await response.json({
-          ok: true,
-          message: "Login successful",
-          token: token,
-        });
+        const data = await response.json();
+        const token = data.token;
         window.localStorage.setItem(tokenKey, token);
         setIsAuthenticated(true);
       } else {
-        console.log(await response.text());
+        setIsAuthenticated(false);
       }
     } catch (error) {
       console.log(error);
@@ -82,9 +80,9 @@ export function AuthProvider({ children }) {
     login,
     signup,
   };
-  return <authContext.Provider value={value}>{children}</authContext.Provider>;
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
-  return React.useContext(authContext);
+  return React.useContext(AuthContext);
 }

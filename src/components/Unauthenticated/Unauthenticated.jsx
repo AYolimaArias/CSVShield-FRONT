@@ -1,11 +1,11 @@
 // import * as React from "react";
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
-import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Unauthenticated = () => {
-  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [status, setStatus] = React.useState("idle");
   const [formData, setFormData] = React.useState({
@@ -25,6 +25,7 @@ const Unauthenticated = () => {
     login(email, password)
       .then(() => {
         setStatus("success");
+        navigate("/upload");
       })
       .catch((error) => {
         setStatus("error");
@@ -32,21 +33,6 @@ const Unauthenticated = () => {
       });
   }
 
-  function handleSubmit2(event) {
-    event.preventDefault();
-    const { email, password } = formData;
-
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    };
-
-    fetch("https://csvshield.onrender.com/login", options)
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err));
-  }
   const isLoading = status === "loading";
 
   return (
@@ -76,16 +62,9 @@ const Unauthenticated = () => {
           />
         </div>
         <div>
-          {isAuthenticated ? (
-            <Link to="/upload">
-              {" "}
-              <button type="submit" disabled={isLoading}>
-                {isLoading ? "Loading..." : "Enter"}
-              </button>
-            </Link>
-          ) : (
-            <Unauthenticated />
-          )}
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Loading..." : "Enter"}
+          </button>
         </div>
       </form>
     </div>

@@ -11,6 +11,7 @@ import { Upload } from "./routes/upload";
 import Signup from "./routes/Signup";
 import { Login } from "./routes/Login";
 import { AuthProvider } from "./contexts/authContext";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/upload",
-    element: <Upload />,
+    element: (
+      <ProtectedRoute>
+        <Upload />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
