@@ -51,16 +51,22 @@ export function AuthProvider({ children }) {
         "Content-Type": "application/json",
       },
     };
-    const response = await fetch(baseUrl + "/signup", options);
+    try {
+      const response = await fetch(baseUrl + "/signup", options);
+      console.log("Respuesta de la API:", response);
 
-    if (response.ok) {
-      return "Account created successfully";
-    } else {
-      const body = await response.json();
-      console.log(body);
-      const error =
-        body.errors instanceof Array ? body.errors.join(", ") : body.errors;
-      return Promise.reject(new Error(error));
+      if (response.ok) {
+        return "Account created successfully";
+      } else {
+        const body = await response.json();
+        console.log(body);
+        const error =
+          body.errors instanceof Array ? body.errors.join(", ") : body.errors;
+        return Promise.reject(new Error(error));
+      }
+    } catch (error) {
+      console.error("Error en signup:", error);
+      return Promise.reject(new Error("Failed to signup"));
     }
   }
 

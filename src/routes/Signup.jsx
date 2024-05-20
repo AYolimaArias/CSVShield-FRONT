@@ -10,7 +10,7 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
-    role: "user",
+    role: "admin",
   });
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,6 +20,7 @@ const Signup = () => {
     event.preventDefault();
 
     setStatus("loading");
+
     const { name, email, password, role } = formData;
     try {
       await signup(name, email, password, role);
@@ -74,16 +75,13 @@ const Signup = () => {
 
         <div>
           <label htmlFor="role">Role</label>
-          <select
+          <input
+            type="role"
             id="role"
             name="role"
             value={formData.role}
             onChange={handleInputChange}
-            required
-          >
-            <option>Admin</option>
-            <option>User</option>
-          </select>
+          />
         </div>
 
         <div>
@@ -97,6 +95,11 @@ const Signup = () => {
           {signUpErrors || "Invalid Credentials"}
         </p>
       )}
+      <div>
+        {status === "success" && (
+          <p>Your Account was created successfully. You can login now</p>
+        )}
+      </div>
     </div>
   );
 };

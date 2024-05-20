@@ -27,13 +27,20 @@ const Authenticated = () => {
         );
       }
     } catch (error) {
-      console.error("Error to upload the file", error);
+      console.error(
+        "Error to upload the file, Only Admin role can upload files",
+        error
+      );
       setStatus("error");
     }
   }
 
   function handleClick() {
     setStatus("idle");
+  }
+
+  function handleRetry(index) {
+    setErrorRows(errorRows.filter((_, i) => i !== index));
   }
 
   const isLoading = status === "loading";
@@ -89,18 +96,18 @@ const Authenticated = () => {
                             id={`${field}-${index}`}
                             type="text"
                             name={field}
-                            defaultValue={message.value}
-                            onChange={(e) => {
-                              const updatedErrorRows = [...errorRows];
-                              updatedErrorRows[index].data[field].value =
-                                e.target.value;
-                              setErrorRows(updatedErrorRows);
-                            }}
+                            defaultValue={message}
+                            // onChange={(e) => {
+                            //   const updatedErrorRows = [...errorRows];
+                            //   updatedErrorRows[index].data[field].value =
+                            //     e.target.value;
+                            //   setErrorRows(updatedErrorRows);
+                            // }}
                           />
-                          <div style={{ color: "red" }}>{message.error}</div>
+                          <div style={{ color: "red" }}>{message}</div>
                         </div>
                       ))}
-                      <button>Retry</button>
+                      <button onClick={() => handleRetry(index)}>Retry</button>
                     </div>
                   ))}
                 </div>
