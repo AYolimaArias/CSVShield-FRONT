@@ -1,10 +1,11 @@
 import { baseUrl, tokenKey } from "../constants";
 
-export async function uploadCSVFile() {
+export async function uploadCSVFile(formData) {
   const token = window.localStorage.getItem(tokenKey);
 
   const options = {
     method: "POST",
+    body: formData,
     headers: { Authorization: `Bearer ${token}` },
   };
   const response = await fetch(baseUrl + "/upload", options);

@@ -3,8 +3,9 @@ import { uploadCSVFile } from "../../services/upload";
 
 const Authenticated = () => {
   const [status, setStatus] = React.useState("idle");
-  const [file, setFile] = React.useState([]);
+  // const [file, setFile] = React.useState([]);
   const [selectedFile, setSelectedFile] = React.useState("");
+  const [results, setResults] = React.useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -13,9 +14,11 @@ const Authenticated = () => {
 
     try {
       setStatus("loading");
-      const newFile = await uploadCSVFile(formData);
-      setFile([...file, newFile]);
+      const response = await uploadCSVFile(formData);
+      setResults(response);
+
       setStatus("success");
+      console.log(response.data);
     } catch (error) {
       console.error("Error to upload the file", error);
       setStatus("error");
@@ -34,7 +37,7 @@ const Authenticated = () => {
               id="file"
               type="file"
               name="file"
-              value={selectedFile}
+              accept=".csv"
               onChange={(e) => setSelectedFile(e.target.files[0])}
               required
             />
@@ -44,6 +47,27 @@ const Authenticated = () => {
             {isLoading ? "Loading..." : "Upload File"}
           </button>
         </form>
+        {status === "success" && results && (
+          <div>
+            <h2>Resultados</h2>
+            <div>
+              <h3>Éxitos:</h3>
+              <ul>
+                {results.data.success.map((row, details) => (
+                  <li key={row}>{details}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>Errores:</h3>
+              <ul>
+                {results.data.error.map((details, row) => (
+                  <li key={row}>{details}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
