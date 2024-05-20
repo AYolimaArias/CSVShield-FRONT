@@ -4,16 +4,16 @@ import { uploadCSVFile } from "../../services/upload";
 const Authenticated = () => {
   const [status, setStatus] = React.useState("idle");
   const [file, setFile] = React.useState([]);
-  const [selectedFile, setSelectedFile] = React.useState(null);
+  const [selectedFile, setSelectedFile] = React.useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const fileData = Object.fromEntries(formData.entries());
+    const formData = new FormData();
+    formData.append("file", selectedFile);
 
     try {
       setStatus("loading");
-      const newFile = await uploadCSVFile(fileData);
+      const newFile = await uploadCSVFile(formData);
       setFile([...file, newFile]);
       setStatus("success");
     } catch (error) {

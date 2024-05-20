@@ -41,16 +41,7 @@ export function AuthProvider({ children }) {
     } catch (error) {
       console.log(error);
     }
-
-    // } else {
-    //   const body = await response.json();
-    //   const error =
-    //     body.errors instanceof Array ? body.errors.join(", ") : body.errors;
-    //   console.error("Error en la respuesta de la API:", error);
-    //   return Promise.reject(new Error(error));
-    // }
   }
-  // fetch("https://csvshield.onrender.com/login", {method:"POST", body:JSON.stringify({email: "angelica@gmail.com", password:"123456"}),headers:{"Content-Type": "application/json"} }).then((response)=>console.log(response))
 
   async function signup(name, email, password, role) {
     const options = {
