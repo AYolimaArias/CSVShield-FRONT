@@ -8,7 +8,7 @@ export const Root = () => {
       </div>
       <div>
         <Link to={`/signup`}>
-          <button>Signup</button>
+          <button className="bg-green-500"> Signup</button>
         </Link>
         <Link to={`/login`}>
           <button>Login</button>

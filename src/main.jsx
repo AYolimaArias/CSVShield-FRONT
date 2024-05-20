@@ -1,16 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
-
 import ErrorPage from "./errors/error-page";
 import { Root } from "./routes/root";
-
 import { Upload } from "./routes/upload";
 import Signup from "./routes/Signup";
 import { Login } from "./routes/Login";
 import { AuthProvider } from "./contexts/authContext";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +28,6 @@ const router = createBrowserRouter([
   },
   {
     path: "/upload",
-
     element: (
       <ProtectedRoute>
         <Upload />
