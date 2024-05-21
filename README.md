@@ -7,7 +7,7 @@ DEMO :  you can see the application in action https://upload-file-csv.netlify.ap
 API repo: https://github.com/AYolimaArias/CSVShield-BACKEND
 
 
-https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/f66b39f6-fa54-4f69-bda7-58b424ddb09b
+https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/1991b16b-b904-4356-9890-b296fe1a1212
 
 
 ## Technologies Used
@@ -103,7 +103,8 @@ Key Features:
  ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/f29c6e73-5fc4-4ffa-87f5-274d50b87997)
 
 
-![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/f7e5797c-6348-47ac-b99b-b7d57e8b5f5c)
+![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/3d87f07b-1c63-494f-ac12-e0262d0ca51b)
+
 
 
 
