@@ -1,0 +1,59 @@
+.default {
+  background-color: var(primary-700);
+  border-radius: 4px;
+  font-weight: 500;
+  size: 14px;
+  color: white;
+}
+.default:hover {
+  background-color: var(primary-900);
+}
+.default:disabled {
+  background-color: var(primary-300);
+  opacity: 50%;
+  pointer-events: none;
+}
+.default:active {
+  background-color: var(primary-800);
+}
+.default:focus {
+  outline-style: solid;
+  outline-color: var(primary-700);
+  outline-width: 2px;
+}
+
+.secondary {
+  background-color: var(secondary-400);
+  border-radius: 4px;
+  font-weight: 500;
+  size: 14px;
+}
+.secondary:hover {
+  background-color: var(secondary-600);
+}
+.secondary:disabled {
+  background-color: var(secondary-400);
+  opacity: 50%;
+  pointer-events: none;
+}
+.secondary:active {
+  background-color: var(secondary-700);
+}
+.secondary:focus {
+  outline-style: solid;
+  outline-color: var(secondary-400);
+  outline-width: 2px;
+}
+
+.sm {
+  padding-inline: calc(4px * 0.5);
+  padding-block: calc(4px * 2);
+}
+.md {
+  padding-inline: calc(4px * 4);
+  padding-block: calc(4px * 2);
+}
+.lg {
+  padding-inline: calc(4px * 8);
+  padding-block: calc(4px * 2);
+}
