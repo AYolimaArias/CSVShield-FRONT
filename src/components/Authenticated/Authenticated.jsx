@@ -24,6 +24,7 @@ const Authenticated = () => {
           response.data.error.flat().map((error) => ({
             row: error.row,
             data: error.details,
+            original: error.record,
           }))
         );
       }
@@ -127,15 +128,14 @@ const Authenticated = () => {
                               id={`${field}-${index}`}
                               type="text"
                               name={field}
-                              defaultValue={""}
-                              placeholder="Rectify error in your document"
+                              defaultValue={error.original[field] || ""}
                               className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display  pl-2 w-52 pt-2 pb-2"
-                              // onChange={(e) => {
-                              //   const updatedErrorRows = [...errorRows];
-                              //   updatedErrorRows[index].data[field].value =
-                              //     e.target.value;
-                              //   setErrorRows(updatedErrorRows);
-                              // }}
+                              onChange={(e) => {
+                                const updatedErrorRows = [...errorRows];
+                                updatedErrorRows[index].original[field].value =
+                                  e.target.value;
+                                setErrorRows(updatedErrorRows);
+                              }}
                             />
                             <div className="font-display text-red-500 ">
                               {message}
