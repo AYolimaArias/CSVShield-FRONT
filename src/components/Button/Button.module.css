@@ -1,47 +1,47 @@
 .default {
-  background-color: var(primary-700);
+  background-color: var(--primary-900);
   border-radius: 4px;
-  font-weight: 500;
+  font-weight: 400;
   size: 14px;
   color: white;
 }
 .default:hover {
-  background-color: var(primary-900);
+  background-color: var(--primary-700);
 }
 .default:disabled {
-  background-color: var(primary-300);
+  background-color: var(--primary-300);
   opacity: 50%;
   pointer-events: none;
 }
 .default:active {
-  background-color: var(primary-800);
+  background-color: var(--primary-800);
 }
 .default:focus {
   outline-style: solid;
-  outline-color: var(primary-700);
+  outline-color: var(--primary-900);
   outline-width: 2px;
 }
 
 .secondary {
-  background-color: var(secondary-400);
+  background-color: var(--secondary-400);
   border-radius: 4px;
   font-weight: 500;
   size: 14px;
 }
 .secondary:hover {
-  background-color: var(secondary-600);
+  background-color: var(--secondary-600);
 }
 .secondary:disabled {
-  background-color: var(secondary-400);
+  background-color: var(--secondary-400);
   opacity: 50%;
   pointer-events: none;
 }
 .secondary:active {
-  background-color: var(secondary-700);
+  background-color: var(--secondary-700);
 }
 .secondary:focus {
   outline-style: solid;
-  outline-color: var(secondary-400);
+  outline-color: var(--secondary-400);
   outline-width: 2px;
 }
 

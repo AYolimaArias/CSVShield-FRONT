@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuth } from "../contexts/authContext";
+import Button from "../components/Button/";
 
 const Signup = () => {
   const { signup } = useAuth();
@@ -35,70 +36,93 @@ const Signup = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="name"
-            name="name"
-            placeholder="Alexandra Martinez"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="alexa@example.com"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-            minLength={6}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="role">Role</label>
-          <input
-            type="role"
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? "Loading..." : "Create"}
-          </button>
-        </div>
-      </form>
-      {hasError && (
-        <p className={["error-message"]}>
-          {signUpErrors || "Invalid Credentials"}
-        </p>
-      )}
       <div>
-        {status === "success" && (
-          <p>Your Account was created successfully. You can login now</p>
+        {hasError && (
+          <div className=" border-primary-500 rounded-md bg-red-300 pr-3 pl-3">
+            <p className={["error-message"]}>
+              {signUpErrors || "Invalid Credentials"}
+            </p>
+          </div>
         )}
+        {status === "success" && (
+          <p className=" border-primary-500 rounded-md bg-green-300 pr-3 pl-3">
+            Your Account was created successfully. You can login now
+          </p>
+        )}
+      </div>
+      <div className="flex justify-center">
+        <form onSubmit={handleSubmit}>
+          <div className="flex ">
+            <label className="mt-1" htmlFor="name">
+              Name
+            </label>
+            <input
+              id="name"
+              type="name"
+              name="name"
+              placeholder="Alexandra Martinez"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
+            />
+          </div>
+
+          <div>
+            <label className="mt-1" htmlFor="email">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="alexa@example.com"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
+            />
+          </div>
+          <div>
+            <label className="mt-1" htmlFor="password">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              minLength={6}
+              className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
+            />
+          </div>
+
+          <div>
+            <label className="mt-1" htmlFor="role">
+              Role
+            </label>
+            <input
+              type="role"
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleInputChange}
+              className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
+            />
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <Button
+              variant="secondary"
+              size="lg"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Create"}
+            </Button>
+          </div>
+        </form>
       </div>
     </div>
   );
