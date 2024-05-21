@@ -6,14 +6,6 @@ DEMO :  you can see the application in action here.
 
 API repo: https://github.com/AYolimaArias/CSVShield-BACKEND
 
-## Routers: 
-
-- Home: "/"
-- User Sign Up: "/signup"
-- User Log In: "/login"
-- CSV File Upload: "/upload"
-
-
 ## Technologies Used
 
 - React
@@ -22,6 +14,13 @@ API repo: https://github.com/AYolimaArias/CSVShield-BACKEND
 - JavaScript
 - HTML
 - Vite
+
+## Routers: 
+
+- Home: "/"
+- User Sign Up: "/signup"
+- User Log In: "/login"
+- CSV File Upload: "/upload"
 
 
 ## Getting Started
@@ -97,7 +96,7 @@ Key Features:
 - Display of upload progress and results.
 - Error message display for any upload issues.
 
-  ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/556b2166-fe17-42a9-bb5e-0ec9955e1abe)
+  ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/fe00c495-975d-41b1-be24-e1d5f644b4f4)
 
   ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/581a69aa-84d2-4442-84fe-5a131a49864e)
 
