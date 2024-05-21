@@ -1,5 +1,6 @@
 import React from "react";
 import { uploadCSVFile } from "../../services/upload";
+import Button from "../Button";
 
 const Authenticated = () => {
   const [status, setStatus] = React.useState("idle");
@@ -47,24 +48,32 @@ const Authenticated = () => {
 
   return (
     <div>
-      <div>
+      <div className="flex justify-center">
         {status === "idle" && (
           <form onSubmit={handleSubmit}>
             <div>
-              <div>Selecciona un archivo de carga</div>
-              <input
-                id="file"
-                type="file"
-                name="file"
-                accept=".csv"
-                onChange={(e) => setSelectedFile(e.target.files[0])}
-                required
-              />
+              <div>
+                <p className="flex justify-center font-title font-medium mb-5  border-primary-500 rounded-md bg-slate-300 pr-0 pl-0">
+                  Selecciona un archivo de carga
+                </p>
+              </div>
+              <div className="flex justify-center mt-16 ml-14">
+                <input
+                  id="file"
+                  type="file"
+                  name="file"
+                  accept=".csv"
+                  onChange={(e) => setSelectedFile(e.target.files[0])}
+                  required
+                />
+              </div>
             </div>
-            <button type="submit" disabled={isLoading}>
-              {" "}
-              {isLoading ? "Loading..." : "Upload File"}
-            </button>
+            <div className="flex justify-center mt-6">
+              <Button variant="secondary" type="submit" disabled={isLoading}>
+                {" "}
+                {isLoading ? "Loading..." : "Upload File"}
+              </Button>
+            </div>
           </form>
         )}
         {status === "success" && results && (
