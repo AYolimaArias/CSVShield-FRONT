@@ -96,9 +96,11 @@ Key Features:
 - Display of upload progress and results.
 - Error message display for any upload issues.
 
-  ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/fe00c495-975d-41b1-be24-e1d5f644b4f4)
+ ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/f29c6e73-5fc4-4ffa-87f5-274d50b87997)
 
-  ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/581a69aa-84d2-4442-84fe-5a131a49864e)
+
+ ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/33155aa9-0559-4427-ae43-eb2c5e4b9541)
+
 
 
 
