@@ -2,9 +2,13 @@
 
 This is the frontend part of a web application that allows users to sign up, log in, and upload CSV files. The backend API used in this project was created by me.
 
-DEMO :  you can see the application in action here.
+DEMO :  you can see the application in action https://upload-file-csv.netlify.app
 
 API repo: https://github.com/AYolimaArias/CSVShield-BACKEND
+
+
+https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/f66b39f6-fa54-4f69-bda7-58b424ddb09b
+
 
 ## Technologies Used
 
@@ -99,7 +103,8 @@ Key Features:
  ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/f29c6e73-5fc4-4ffa-87f5-274d50b87997)
 
 
- ![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/33155aa9-0559-4427-ae43-eb2c5e4b9541)
+![image](https://github.com/AYolimaArias/CSVShield-FRONT/assets/125715473/f7e5797c-6348-47ac-b99b-b7d57e8b5f5c)
+
 
 
 
