@@ -97,7 +97,7 @@ const Authenticated = () => {
                 <div className="mb-8">
                   {" "}
                   The ({errorRows.length}) records listed encountered errors.
-                  Please rectify these issues and rety
+                  Please rectify these issues and retry:
                 </div>
 
                 <div className="flex flex-col gap-3">
