@@ -2,6 +2,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
+import Button from "../Button";
 
 const Unauthenticated = () => {
   const navigate = useNavigate();
@@ -39,32 +40,46 @@ const Unauthenticated = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="alexa@example.com"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
+          <div className="">
+            <label className="mt-1" htmlFor="email">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="alexa@example.com"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
+            />
+          </div>
+          <div>
+            <label className="mt-1" htmlFor="password">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              minLength={6}
+              className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-            minLength={6}
-          />
-        </div>
-        <div>
-          <button type="submit" disabled={isLoading}>
+
+        <div className="flex justify-center mt-6">
+          <Button
+            variant="secondary"
+            size="lg"
+            type="submit"
+            disabled={isLoading}
+          >
             {isLoading ? "Loading..." : "Enter"}
-          </button>
+          </Button>
         </div>
       </form>
     </div>
