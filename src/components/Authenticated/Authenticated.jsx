@@ -128,7 +128,7 @@ const Authenticated = () => {
                               id={`${field}-${index}`}
                               type="text"
                               name={field}
-                              defaultValue={error.original[field] || ""}
+                              defaultValue={error.original[field]}
                               className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display  pl-2 w-52 pt-2 pb-2"
                               onChange={(e) => {
                                 const updatedErrorRows = [...errorRows];
