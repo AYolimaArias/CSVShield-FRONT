@@ -40,7 +40,7 @@ const Unauthenticated = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <div className="">
+          <div className="flex justify-center mt-10">
             <label className="mt-1" htmlFor="email">
               Email
             </label>
@@ -55,7 +55,7 @@ const Unauthenticated = () => {
               className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
             />
           </div>
-          <div>
+          <div className="flex justify-center">
             <label className="mt-1" htmlFor="password">
               Password
             </label>

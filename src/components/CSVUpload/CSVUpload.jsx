@@ -7,7 +7,7 @@ const CSVUpload = () => {
 
   return (
     <div>
-      <h1 className="flex justify-center font-title font-bold  mt-10 mb-5">
+      <h1 className="flex justify-center font-title font-bold  mt-10 mb-5 text-4xl">
         Sistema de Carga de Datos
       </h1>
       {isAuthenticated ? <Authenticated /> : <Unauthenticated />}

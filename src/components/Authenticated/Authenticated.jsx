@@ -53,8 +53,8 @@ const Authenticated = () => {
           <form onSubmit={handleSubmit}>
             <div>
               <div>
-                <p className="flex justify-center font-title font-medium mb-5  border-primary-500 rounded-md bg-slate-300 pr-0 pl-0">
-                  Selecciona un archivo de carga
+                <p className="flex justify-center font-title font-medium mb-5 mt-10 text-2xl border-primary-500 rounded-md bg-slate-300 pr-0 pl-0">
+                  Select a File to upload
                 </p>
               </div>
               <div className="flex justify-center mt-16 ml-14">
@@ -77,7 +77,7 @@ const Authenticated = () => {
           </form>
         )}
         {status === "success" && results && (
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-[900px]">
             <div>
               <div className="flex mt-10  mb-10">
                 <div className="mr-3">
@@ -87,7 +87,7 @@ const Authenticated = () => {
                 </div>
                 <div>
                   <div className="bg-green-300 pr-4 pl-4 ml-10  border border-primary-500 rounded-md">
-                    {results.data.success.flat().length} records uploades
+                    {results.data.success.flat().length} records uploaded
                     successfully
                   </div>
                 </div>
@@ -100,49 +100,58 @@ const Authenticated = () => {
                   Please rectify these issues and retry:
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className=" flex flex-col gap-3">
                   {errorRows.map((error, index) => (
                     <div key={index} style={{ margin: "10px 0" }}>
                       <div
-                        className="flex
+                        className=" relative flex gap-4 w-auto border-b  border-primary-500 pb-6
                       "
                       >
-                        <div className="font-semibold">Row {error.row}:</div>
-
-                        <Button
-                          variant="secondary"
-                          className="pt-0 pb-0 
-                          ml-96"
-                          onClick={() => handleRetry(index)}
-                        >
-                          Retry
-                        </Button>
-                      </div>
-
-                      {Object.entries(error.data).map(([field, message]) => (
-                        <div className="flex" key={field}>
-                          <label className="" htmlFor={`${field}-${index}`}>
-                            {field}
-                          </label>
-                          <input
-                            id={`${field}-${index}`}
-                            type="text"
-                            name={field}
-                            defaultValue={""}
-                            placeholder="Rectify error in your document"
-                            className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display ml-2 pl-2"
-                            // onChange={(e) => {
-                            //   const updatedErrorRows = [...errorRows];
-                            //   updatedErrorRows[index].data[field].value =
-                            //     e.target.value;
-                            //   setErrorRows(updatedErrorRows);
-                            // }}
-                          />
-                          <div className="font-display text-red-500 ml-2">
-                            {message}
-                          </div>
+                        <div className=" flex flex-col items-center">
+                          <p className="font-semibold">Row</p>
+                          <div className="">{error.row}</div>
                         </div>
-                      ))}
+
+                        {Object.entries(error.data).map(([field, message]) => (
+                          <div
+                            className="flex flex-col justify-center items-center"
+                            key={field}
+                          >
+                            <label
+                              className="font-semibold"
+                              htmlFor={`${field}-${index}`}
+                            >
+                              {field}
+                            </label>
+                            <input
+                              id={`${field}-${index}`}
+                              type="text"
+                              name={field}
+                              defaultValue={""}
+                              placeholder="Rectify error in your document"
+                              className="mt-1  border border-primary-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-700 sm:text-sm font-display  pl-2 w-52 pt-2 pb-2"
+                              // onChange={(e) => {
+                              //   const updatedErrorRows = [...errorRows];
+                              //   updatedErrorRows[index].data[field].value =
+                              //     e.target.value;
+                              //   setErrorRows(updatedErrorRows);
+                              // }}
+                            />
+                            <div className="font-display text-red-500 ">
+                              {message}
+                            </div>
+                          </div>
+                        ))}
+                        <div className="absolute top-6 right-0 ">
+                          <Button
+                            variant="secondary"
+                            className="mt-0 mb-1"
+                            onClick={() => handleRetry(index)}
+                          >
+                            Retry
+                          </Button>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>

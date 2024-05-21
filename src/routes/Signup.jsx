@@ -45,12 +45,12 @@ const Signup = () => {
           </div>
         )}
         {status === "success" && (
-          <p className=" border-primary-500 rounded-md bg-green-300 pr-3 pl-3">
+          <p className=" border-primary-500 rounded-md bg-green-300 pr-3 pl-3 ">
             Your Account was created successfully. You can login now
           </p>
         )}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-8">
         <form onSubmit={handleSubmit}>
           <div className="flex ">
             <label className="mt-1" htmlFor="name">
